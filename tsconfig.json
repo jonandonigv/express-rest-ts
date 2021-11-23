@@ -5,6 +5,9 @@
     "outDir": "./dist",
     "esModuleInterop": true,
     "strict": true,
+    "moduleResolution": "node",
+    "skipDefaultLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "src/**/*.ts"
