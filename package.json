@@ -12,10 +12,18 @@
   "author": "Jon Andoni Galdosç",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "connect-mongodb-session": "^3.1.1",
+    "csurf": "^1.11.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^6.0.13"
+    "express-session": "^1.17.2",
+    "express-validator": "^6.13.0",
+    "mongoose": "^6.0.13",
+    "multer": "^1.4.3",
+    "nodemailer": "^6.7.1",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "stripe": "^8.191.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
