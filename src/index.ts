@@ -1,4 +1,4 @@
-import express, { NextFunction } from 'express';
+import express, { NextFunction, ErrorRequestHandler } from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import csrf from 'csurf';
@@ -53,8 +53,34 @@ app.use(session({
     saveUninitialized: false,
     store: store
 }));
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'OPTIONS, GET, POST, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+});
 
+const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
+    console.log(err);
+    const status = err.statusCode || 500;
+    const message = err.message;
+    const data = err.data;
+    res.status(status).json({message: message, data: data});
+};
+app.use(errorHandler);;
 // Routes
+
+/* app.use((req, res, next) => {
+    res.locals.isAuthenticated = req.session.isLoggedIn;
+    res.locals.csrfToken = req.csrfToken();
+    next();
+});
+
+app.use((req, res, next) => {
+    if (!req.session.user) {
+        return next();
+    }
+    // TODO: Search for user logged in and if the user does not exist throw error
+}); */
 
 app.get('/', (req, res) => {
     res.status(200).json({
