@@ -25,4 +25,6 @@ router.put('/signup', [
         .isEmpty()
 ], authController.SingUp);
 
+router.post('/login', authController.Login);
+
 export default router;
