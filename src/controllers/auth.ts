@@ -17,9 +17,11 @@ export const SingUp = async (req: Request, res: Response, next: NextFunction) =>
     const email = req.body.email;
     const name = req.body.name;
     const password = req.body.password;
+    console.log(email, name, password);
 
     try {
         const hashedPass = await bcrypt.hash(password, 10);
+        console.log(hashedPass);
 
         const user = new User({
             email: email,
