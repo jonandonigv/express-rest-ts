@@ -1,15 +1,15 @@
 import mongoose, { Schema } from 'mongoose';
 
-export type UserDocument = mongoose.Document & {
+/* export type UserDocument = mongoose.Document & {
     name: string;
     email: string;
     password: string;
     resetToken: string;
     resettokenExpiration: Date;
     cart: object;
-};
+}; */
 
-const userSchema = new mongoose.Schema<UserDocument>(
+const userSchema = new mongoose.Schema(
     {
         name: String,
         email: { type: String, required: true },
@@ -56,7 +56,7 @@ userSchema.methods.addToCart = function(product) {
 };
 
 userSchema.methods.removefromCart = function(productId) {
-    const updatedCartItems = this.cart.items.filter( item => {
+    const updatedCartItems = this.cart.items.filter(item => {
         return item.productId.toString() !== productId.toString();
     });
     this.cart.items = updatedCartItems;
@@ -69,4 +69,4 @@ userSchema.methods.clearCart = function() {
 };
 
 
-export const User = mongoose.model<UserDocument>("User", userSchema);
+export const User = mongoose.model("User", userSchema);
