@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { validationResult } from "express-validator";
 
-import {User, UserDocument} from '../models/user';
+import {User} from '../models/user';
 
 
 export const SingUp = async (req: Request, res: Response, next: NextFunction) => {
