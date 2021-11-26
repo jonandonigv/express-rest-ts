@@ -27,6 +27,6 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
     try {
         await product.save();
     } catch (error) {
-        
+        res.status(401).json({error: error});
     }
 };
