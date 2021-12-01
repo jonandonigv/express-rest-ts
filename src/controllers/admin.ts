@@ -3,6 +3,7 @@ import path from 'path';
 import express, { Request, Response, NextFunction } from 'express';
 
 import { Product } from '../models/product';
+import { User } from '../models/user';
 import { validationResult } from 'express-validator';
 
 export const createProduct = async (req: Request, res: Response, next: NextFunction) => {
@@ -23,10 +24,15 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
         imageUrl: image,
         price: price,
         description: description,
+        user: User.findOne({email: 'admin@admin.com'})
     });
     try {
         await product.save();
+        return res.status(200).json({
+            message: 'Product Created successfuly',
+            product: product
+        });
     } catch (error) {
-        res.status(401).json({error: error});
+        return res.status(401).json({error: error});
     }
 };
