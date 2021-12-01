@@ -63,3 +63,7 @@ export const Login = async (req: Request, res: Response, next: NextFunction) => 
         }
     }
 };
+
+export const getUser = async (req: Request, res: Response, next: NextFunction) => {
+    // const user = User.findOne({_id: req.user._id}); // Find the logged user info.
+};
