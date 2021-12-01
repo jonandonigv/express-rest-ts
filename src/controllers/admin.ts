@@ -24,7 +24,7 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
         imageUrl: image,
         price: price,
         description: description,
-        user: User.findOne({email: 'admin@admin.com'})
+        user: req.user._id
     });
     try {
         await product.save();
