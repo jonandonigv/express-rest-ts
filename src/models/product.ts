@@ -1,3 +1,4 @@
+import { timeStamp } from 'console';
 import mongoose, { mongo, SchemaTypes } from 'mongoose';
 
 const productSchema = new mongoose.Schema({
@@ -22,5 +23,7 @@ const productSchema = new mongoose.Schema({
         ref: 'User',
         required: true,
     }
+}, {
+    timestamps: true
 });
 export const Product = mongoose.model("Product", productSchema);
