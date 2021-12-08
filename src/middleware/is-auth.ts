@@ -16,6 +16,6 @@ export const isAuth = (req: Request, res: Response, next: NextFunction) => {
     if(!decodedToken) {
         res.status(401).json({message: 'Not authenticated'});
     }
-    req.userId = decodedToken.userId;
+    req.userId = decodedToken?.userId;
     next();
 };
